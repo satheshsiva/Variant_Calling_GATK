@@ -1,6 +1,6 @@
 ## Workspace Hygiene and Environment Setup
 
-2. Verify or Install gatk4 (via Conda/Mamba)  
+1. Verify or Install gatk4 (via Conda/Mamba)  
 Goal: Check if gatk is already available in your active Conda environment; if not, install gatk4-lite (lightweight GATK4 without heavy Spark dependencies) alongside samtools and bcftools.
 
 ```bash
@@ -8,8 +8,8 @@ Goal: Check if gatk is already available in your active Conda environment; if no
 which gatk && gatk --version
 
 # If NOT found, create/update a clean environment:
-# mamba create -n var -c bioconda -c conda-forge gatk4-lite samtools bcftools htslib -y
-# conda activate var
+# mamba create -n gatk_env -c conda-forge -c bioconda gatk4-lite samtools bcftools htslib snpeff ensembl-vep -y
+# conda activate gatk_env
 ```
 *Expected Output:* gatk --version prints The Genome Analysis Toolkit (GATK) v4.x.x.x (e.g., v4.6.2.0 or v4.7.0.0).
 
@@ -46,7 +46,7 @@ mkdir -p ref data
 mv na12878_chr20.bam  na12878_chr20.bam.bai data/
 mv chr20.fa  chr20.fa.fai  clinvar.vcf.gz  clinvar.vcf.gz.tbi ref/
 ```
-
+  
 3. Inspect BAM Header & Contig Naming (chr20 vs 20)  
 *Goal:* Confirm whether your chr20.fa and na12878_chr20.bam use chr20 or 20 chromosome naming, and check if Read Groups (@RG) exist (GATK requires @RG tags in the BAM header).
 

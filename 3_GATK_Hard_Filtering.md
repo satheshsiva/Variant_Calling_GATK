@@ -1,4 +1,3 @@
-```markdown
 # Step 3: GATK Hard Filtering & Post-Filter QC
 
 **Script:** `scripts/03_hard_filtering.sh`

@@ -38,8 +38,8 @@ bcftools query -r 20:126155,20:1895949-1895950,20:25281333,20:25283938 \
 
 
 ## 3. Terminal Alignment Verification with samtools tview
-Before reporting any candidate variant, inspect the raw read pileup in data/processed/na12878_chr20.recal.bam to rule out mapping artifacts, strand bias, or split-indel phasing illusions:
-samtools tview Interactive Shortcuts
+Before reporting any candidate variant, inspect the raw read pileup in data/processed/na12878_chr20.recal.bam to rule out mapping artifacts, strand bias, or split-indel phasing illusions:  
+samtools tview Interactive Shortcuts  
 . — Toggle between dot/comma match display and explicit base letters (A/C/G/T)  
 
 g — Jump directly to a specific coordinate (enter 20:25283938 and press Enter)  

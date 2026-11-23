@@ -1,4 +1,3 @@
-```markdown
 # Step 2: Germline Variant Discovery in GVCF Mode
 
 **Script:** `scripts/02_haplotypecaller_gvcf.sh`
