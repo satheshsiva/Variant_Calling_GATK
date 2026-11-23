@@ -10,6 +10,14 @@ which gatk && gatk --version
 # If NOT found, create/update a clean environment:
 # mamba create -n gatk_env -c conda-forge -c bioconda gatk4-lite samtools bcftools htslib snpeff ensembl-vep -y
 # conda activate gatk_env
+
+# To download SnpEff dataset
+snpEff download GRCh37.
+
+# To download VEP database 
+mkdir -p vep_cache
+vep_install -a cf -s homo_sapiens -y GRCh37 -c vep_cache --CONVERT
+
 ```
 *Expected Output:* gatk --version prints The Genome Analysis Toolkit (GATK) v4.x.x.x (e.g., v4.6.2.0 or v4.7.0.0).
 
@@ -29,9 +37,10 @@ samtools index na12878_chr20.bam
 
 # 2. Download matching GRCh37 Chromosome 20 reference FASTA
 wget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz
-samtools faidx hs37d5.fa.gz 20 > chr20.fa
-rm -f hs37d5.fa.gz hs37d5.fa.gz.fai hs37d5.fa.gz.gzi
+gzip -dc hs37d5.fa.gz > hs37d5.fa
+samtools faidx hs37d5.fa 20 > chr20.fa
 samtools faidx chr20.fa
+rm -f hs37d5.fa.gz hs37d5.fa.gz.fai hs37d5.fa.gz.gzi
 
 # Code to directly download chr20 from web
 # wget [https://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.chromosome.20.fa.gz](https://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.chromosome.20.fa.gz) && gunzip -c Homo_sapiens.GRCh37.dna.chromosome.20.fa.gz > chr20.fa && samtools faidx chr20.fa

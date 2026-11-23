@@ -8,7 +8,7 @@ CLINVAR="ref/clinvar.vcf.gz"
 
 CLINVAR_VCF="Results/na12878_chr20.clinvar.vcf.gz"
 SNPEFF_VCF="Results/na12878_chr20.clinvar.snpeff.vcf.gz"
-SUMMARY_TSV="Results/candidate_clinical_variants.tsv"
+SUMMARY_TSV="Results/candidate_clinical_variants_SnpEff.tsv"
 
 echo "[1/3] Splitting multiallelic sites and left-normalizing indels..."
 bcftools norm -m -any -f "$REF" "$PASS_VCF" -Oz -o "$NORM_VCF"

@@ -12,7 +12,7 @@ Unlike pileup-based callers that evaluate base counts column-by-column, `Haploty
 4. **GVCF Reference Compression (`-ERC GVCF`):** Emits both candidate variant sites (with a symbolic `<NON_REF>` allele) and homozygous-reference confidence intervals (`END=...`), enabling scalable multi-sample joint genotyping without re-reading BAM files.
 
 ### Joint Genotyping (`GenotypeGVCFs`)
-`GenotypeGVCFs` evaluates genotype likelihoods across samples, strips `<NON_REF>` placeholders and homozygous reference blocks, applies the call-confidence threshold (`QUAL >= 10`), and annotates known dbSNP rsIDs (`-D`).
+`GenotypeGVCFs` GenotypeGVCFs performs genotyping using the GVCF likelihood information and reference-confidence blocks, strips `<NON_REF>` placeholders and homozygous reference blocks, applies the call-confidence threshold (`QUAL >= 10`), and annotates known dbSNP rsIDs (`-D`).
 
 ---
 

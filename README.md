@@ -1,6 +1,6 @@
 # GATK Germline Short Variant Discovery & Clinical Annotation Pipeline (Chr20)
 
-A modular, reproducible **GATK4 Best Practices** workflow for human germline short variant calling (SNPs and Indels), hard filtering, and functional/clinical annotation on **NA12878 Chromosome 20 (GRCh37 / b37)**.
+A modular, reproducible **GATK4-based germline variant discovery workflow inspired by GATK Best Practices.** workflow for human germline short variant calling (SNPs and Indels), hard filtering, and functional/clinical annotation on **NA12878 Chromosome 20 (GRCh37 / b37)**.
 
 Designed as a lightweight, laptop-friendly companion to standard pileup variant calling tutorials, this repository separates executable Bash modules (`scripts/`) from step-by-step biological and algorithmic documentation.
 
@@ -25,7 +25,7 @@ GATK_pipe/
 ├── 4_Annotation_and_Comparison.md
 ├── 5_Clinical_Interpretation_and_Visualization.md
 └── Results/
-    └── candidate_clinical_variants.tsv # Tracked summary of high-impact / ClinVar candidate variants
+    └── candidate_clinical_variants_SnpEff.tsv # Tracked summary of high-impact / ClinVar candidate variants
 ```
 ## Software Requirements
 All command-line tools are managed via Conda/Mamba (conda-forge and bioconda channels):  
@@ -37,6 +37,8 @@ All command-line tools are managed via Conda/Mamba (conda-forge and bioconda cha
 ```Bash
 mamba create -n gatk_env -c conda-forge -c bioconda gatk4-lite samtools bcftools htslib snpeff ensembl-vep -y
 conda activate gatk_env
+
+snpEff download GRCh37.75
 ```
 ## Quick Start
 Place input reference and alignment files in ref/ and data/ (excluded from Git via .gitignore):
@@ -61,14 +63,51 @@ Benchmark Summary (NA12878 Contig 20, GRCh37)
 | Hard-Filtered PASS VCF (VariantFiltration) | 105,417       | 86,504 | 19,017 | 2.10        | 98.09% (SNPs) / 92.41% (Indels) |
 
 ### Detailed Guides
-Step 1: Setup, Duplicate Marking & BQSR
+Step 1: Setup, Duplicate Marking & BQSR  
+Step 2: GVCF Variant Discovery & Joint Genotyping  
+Step 3: GATK Hard Filtering & QC Metrics  
+Step 4: Normalization, Ensembl VEP, ClinVar & SnpEff Annotation  
+Step 5: Biological Interpretation & Alignment Visualization  
 
-Step 2: GVCF Variant Discovery & Joint Genotyping
+## Limitations
 
-Step 3: GATK Hard Filtering & QC Metrics
+- Analysis is restricted to chromosome 20.
+- Single-sample germline variant calling is performed.
+- Hard-filtering thresholds are demonstration parameters
+  and require dataset-specific validation.
+- ClinVar classifications are database annotations,
+  not independent clinical diagnoses.
+- Functional predictions from SnpEff and VEP require
+  transcript-aware interpretation.
+- Results should not be used for clinical decision-making.
 
-Step 4: Normalization, Ensembl VEP, ClinVar & SnpEff Annotation
+```bash
+gatk --version
+#The Genome Analysis Toolkit (GATK) v4.7.0.0
+#HTSJDK Version: 5.0.0
+#Picard Version: 3.5.0
 
-Step 5: Biological Interpretation & Alignment Visualization
+samtools --version
+#samtools 1.21
+#Using htslib 1.21
+
+bcftools --version
+#bcftools 1.14
+#Using htslib 1.21
+
+npEff -version
+#SnpEff  5.4c    2026-02-23
+
+vep --help | head
+#----------------------------------#
+# ENSEMBL VARIANT EFFECT PREDICTOR #
+#----------------------------------#
+#Versions:
+#  ensembl              : 116.0d85231
+#  ensembl-compara      : 116.4038708
+#  ensembl-funcgen      : 116.90049ea
+#  ensembl-io           : 116.6afb5dc
+#  ensembl-variation    : 116.db7394a
+```
 
 __END__

@@ -1,0 +1,26 @@
+# Genomic data and reference files
+data/
+ref/
+*.bam
+*.bai
+*.cram
+*.crai
+*.vcf
+*.vcf.gz
+*.g.vcf.gz
+*.tbi
+*.idx
+*.fa
+*.fasta
+*.fai
+*.dict
+*.table
+*.recal*
+
+# Large intermediate outputs & logs
+Results/*.vcf*
+Results/*.tsv
+!Results/candidate_clinical_variants_SnpEff.tsv
+*.log
+.nextflow*
+work/

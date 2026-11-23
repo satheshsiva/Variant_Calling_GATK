@@ -38,6 +38,6 @@ Read Pairs Examined: 6,705,731
 
 Read Pair Duplicates: 13,116 (104 optical duplicates)
 
-Duplication Rate: 0.002454 (~0.25%), confirming high library complexity (ESTIMATED_LIBRARY_SIZE = 1,725,608,882).
+Duplication Rate: 0.002454 (~0.25%), confirming high library complexity.
 
 __END__

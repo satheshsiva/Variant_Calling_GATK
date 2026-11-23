@@ -74,13 +74,13 @@ vep --input_file Results/na12878_chr20.norm.vcf.gz \
     --compress_output bgzip \
     --cache \
     --offline \
-    --dir_cache "${VEP_CACHE:-$HOME/.vep}" \
+    --dir_cache "vep_cache" \
     --assembly GRCh37 \
     --fasta ref/chr20.fa \
     --symbol \
     --canonical \
     --hgvs \
-    --af_gnomade \
+    --check_existing \
     --sift b \
     --polyphen b \
     --custom ref/clinvar.vcf.gz,ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN \
@@ -98,7 +98,8 @@ vep -i Results/na12878_chr20.norm.vcf.gz \
     --vcf \
     --compress_output bgzip \
     --database \
-    --assembly GRCh37 \
+    --host grch37.ensembl.org \
+    --user anonymous \
     --port 3337 \
     --symbol \
     --canonical \

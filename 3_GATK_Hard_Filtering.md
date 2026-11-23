@@ -78,7 +78,7 @@ gatk CollectVariantCallingMetrics \
 TOTAL_SNPS  NUM_IN_DB_SNP  NOVEL_SNPS  FILTERED_SNPS  PCT_DBSNP  DBSNP_TITV  NOVEL_TITV  TOTAL_INDELS  NOVEL_INDELS  FILTERED_INDELS  PCT_DBSNP_INDELS  NUM_IN_DB_SNP_INDELS  DBSNP_INS_DEL_RATIO  NOVEL_INS_DEL_RATIO  TOTAL_MULTIALLELIC_SNPS  NUM_IN_DB_SNP_MULTIALLELIC  TOTAL_COMPLEX_INDELS  NUM_IN_DB_SNP_COMPLEX_INDELS  SNP_REFERENCE_BIAS  NUM_SINGLETONS
 86206       84563          1643        0              0.980941   2.124326    1.409091    17682         1342          0                0.924104          16340                 0.957824             1.096875             194                      160                         1163                  1118                          0.542202            72041
 ```
-dbSNP SNP Concordance (PCT_DBSNP): 98.09% (84,563 / 86,206 biallelic SNPs; DBSNP_TITV = 2.12)
+dbSNP representation percentages (PCT_DBSNP): 98.09% (84,563 / 86,206 biallelic SNPs; DBSNP_TITV = 2.12)
 
 dbSNP Indel Concordance (PCT_DBSNP_INDELS): 92.41% (16,340 / 17,682)
 
